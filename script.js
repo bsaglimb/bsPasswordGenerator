@@ -35,12 +35,6 @@ function generatePassword() {
 
   // create for loops based on the number of characters selected that will randomize my character sets and return 1 character to the final password. 
 
-  /**function finalPassword(){
-  upper[Math.floor(Math.random() * upper.length)];
-
- return finalPassword;
- **/
-
 
   // Write password to the #password input
 
@@ -48,6 +42,21 @@ function generatePassword() {
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+
+  for (var i = 0; i <= password.Length; i++) {
+    var randomUpper = Math.floor(Math.random() * upper.length);
+    password += upper.substring(randomUpper, randomUpper +1);
+   }
+
+   for (var i = 0; i <= password.Length; i++) {
+    var randomLower = Math.floor(Math.random() * lower.length);
+    password += lower.substring(randomLower, randomLower +1);
+   }
+
+   for (var i = 0; i <= password.Length; i++) {
+    var randomSpecial = Math.floor(Math.random() * special.length);
+    password += special.substring(randomSpecial, randomSpecial +1);
+   }
 
   passwordText.value = password;
 
