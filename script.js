@@ -1,8 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var upper = ["A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,UV,W,X,Y,Z"];
-var lower = ["a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"];
-var special = ["~,!,@,#,$,%,^,&,*"];
+var upper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var lower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var special = ["~","!","@","#","$","%","^","&","*"];
 
 function generatePassword() {
   // create a prompt pop up box to ask the user how many characters they need in their password
@@ -34,33 +34,32 @@ function generatePassword() {
   }
 
   // create for loops based on the number of characters selected that will randomize my character sets and return 1 character to the final password. 
+  var password = ""
+  for (var i = 0; i < parseInt(numberOfCharacters); i++) {
+    var randomUpper = Math.floor(Math.random() * upper.length);
+    password += upper[randomUpper];
+   }
 
+   for (var i = 0; i < parseInt(numberOfCharacters); i++) {
+    var randomLower = Math.floor(Math.random() * lower.length);
+    password += lower[randomLower];
+   }
 
-  // Write password to the #password input
+   for (var i = 0; i < parseInt(numberOfCharacters); i++) {
+    var randomSpecial = Math.floor(Math.random() * special.length);
+    password += special[randomSpecial];
+   }
+
+  writePassword(password)
 
 }
-function writePassword() {
-  var password = generatePassword();
+function writePassword(password) {
   var passwordText = document.querySelector("#password");
 
-  for (var i = 0; i <= password.Length; i++) {
-    var randomUpper = Math.floor(Math.random() * upper.length);
-    password += upper.substring(randomUpper, randomUpper +1);
-   }
-
-   for (var i = 0; i <= password.Length; i++) {
-    var randomLower = Math.floor(Math.random() * lower.length);
-    password += lower.substring(randomLower, randomLower +1);
-   }
-
-   for (var i = 0; i <= password.Length; i++) {
-    var randomSpecial = Math.floor(Math.random() * special.length);
-    password += special.substring(randomSpecial, randomSpecial +1);
-   }
 
   passwordText.value = password;
-
+console.log(password)
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
